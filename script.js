@@ -96,6 +96,7 @@ const decoder = new TextDecoder();
 
 const $ = s => document.querySelector(s);
 
+const publicKeyInputArea = $("#publicKeyInputArea");
 const publicKeyInput = $("#publicKeyInput");
 const publicKeyInputButton = $("#publicKeyInputButton");
 const publicKeyError = $("#publicKeyError");
@@ -104,15 +105,17 @@ const plainTextInput = $("#plainTextInput");
 const cipherTextInput = $("#cipherTextInput");
 const plainTextOutput = $("#plainTextOutput");
 const cipherTextOutput = $("#cipherTextOutput");
+const encryptArea = $("#encryptArea");
 const encryptError = $("#encryptError");
+const decryptArea = $("#decryptArea");
 const decryptError = $("#decryptError");
 
 publicKeyInputButton.addEventListener("click", async function (e) {
   publicKeyError.textContent = "";
   try {
     await getAesKey(publicKeyInput.value);
-    publicKeyInput.disabled = publicKeyInputButton.disabled = true;
-    plainTextInput.disabled = cipherTextInput.disabled = false;
+    publicKeyInputArea.disabled = true;
+    encryptArea.disabled = encryptArea.disabled = false;
   }
   catch (error) {
     publicKeyError.textContent = error;
@@ -142,7 +145,7 @@ cipherTextInput.addEventListener("input", async function (e) {
 async function start() {
   await generateKeyPair();
   publicKeyOutput.textContent = publicKeyString;
-  publicKeyInput.disabled = publicKeyInputButton.disabled = false;
+  publicKeyInputArea.disabled = false;
 }
 
 

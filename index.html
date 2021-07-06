@@ -13,32 +13,32 @@
     </fieldset>
     
     
-    <fieldset>
+    <fieldset disabled id="publicKeyInputArea">
       <legend>
         Stranger's Public Key <em>(Value from other person)</em>
       </legend>
       
       <div id="publicKeyError" class="error"></div>
-      <input type="text" id="publicKeyInput" disabled> <button id="publicKeyInputButton" disabled>Go!</button>
+      <input type="text" id="publicKeyInput"> <button id="publicKeyInputButton">Go!</button>
     </fieldset>
     
     
-    <fieldset>
+    <fieldset disabled id="encryptArea">
       <legend>Encrypt</legend>
       
       <div id="encryptError" class="error"></div>
       
-      <textarea id="plainTextInput" disabled placeholder="plaintext"></textarea>
+      <textarea id="plainTextInput" placeholder="plaintext"></textarea>
       <textarea id="cipherTextOutput" readonly placeholder="ciphertext"></textarea>
     </fieldset>
     
     
-    <fieldset>
+    <fieldset disabled id="decryptArea">
       <legend>Decrypt</legend>
       
       <div id="decryptError" class="error"></div>
       
-      <textarea id="cipherTextInput" disabled placeholder="ciphertext"></textarea>
+      <textarea id="cipherTextInput" placeholder="ciphertext"></textarea>
       <textarea id="plainTextOutput" readonly placeholder="plaintext"></textarea>
     </fieldset>
     
