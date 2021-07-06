@@ -69,7 +69,7 @@ async function encrypt(text) {
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const plainText = encoder.encode(text);
   const cipherText = await crypto.subtle.encrypt({name: "AES-GCM", iv}, aesKey, plainText);
-  const resultBuffer = concatBuffers(iv, ciphertext);
+  const resultBuffer = concatBuffers(iv, cipherText);
   return encodeBase58(resultBuffer);
 }
 
