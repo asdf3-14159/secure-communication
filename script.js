@@ -1,7 +1,7 @@
 "use strict";
 
 let privateKey = null;
-let publicKey = null;
+let publicKeyString = null;
 let aesKey = null;
 
 const encoder = new TextEncoder();
@@ -61,10 +61,10 @@ function concatBuffers(buffer1, buffer2) {
 
 
 async function generateKeyPair() {
-  const {private: private, public: public} = await crypto.subtle.generateKey({name: "ECDH", namedCurve: "P-521"}, true, ["deriveKey", "deriveBits"]);
-  privateKey = private;
-  const buffer = await crypto.subtle.exportKey("raw", public);
-  publicKey = encodeBase58(buffer);
+  let publicKey;
+  ({private: privateKey, public: publicKey} = await crypto.subtle.generateKey({name: "ECDH", namedCurve: "P-521"}, true, ["deriveKey", "deriveBits"]));
+  const buffer = await crypto.subtle.exportKey("raw", publicKey);
+  publicKeyString = encodeBase58(buffer);
 }
 
 async function getAesKey(publicKey) {
