@@ -97,7 +97,7 @@ const decoder = new TextDecoder();
 const $ = s => document.querySelector(s);
 
 const publicKeyInput = $("#publicKeyInput");
-const publicKeyDislpay = $("#publicKeyDisplay");
+const publicKeyDisplay = $("#publicKeyDisplay");
 const publicKeyInputButton = $("#publicKeyInputButton");
 const plaintext = $("#plaintext");
 const ciphertext = $("#ciphertext");
