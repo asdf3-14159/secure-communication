@@ -115,7 +115,7 @@ publicKeyInputButton.addEventListener("click", async function (e) {
   try {
     await getAesKey(publicKeyInput.value);
     publicKeyInputArea.disabled = true;
-    encryptArea.disabled = encryptArea.disabled = false;
+    encryptArea.disabled = decryptArea.disabled = false;
   }
   catch (error) {
     publicKeyError.textContent = error;
