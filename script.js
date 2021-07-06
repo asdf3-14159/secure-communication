@@ -1,12 +1,5 @@
 "use strict";
 
-let privateKey = null;
-let publicKeyString = null;
-let aesKey = null;
-
-const encoder = new TextEncoder();
-const decoder = new TextDecoder();
-
 function integerToDigits(n, b) {
   n = BigInt(n);
   b = BigInt(b);
@@ -93,6 +86,35 @@ async function decrypt(text) {
 
 
 
+let privateKey = null;
+let publicKeyString = null;
+let aesKey = null;
+
+const encoder = new TextEncoder();
+const decoder = new TextDecoder();
+
+
+const $ = s => document.querySelector(s);
+
+const publicKeyInput = $("#publicKeyInput");
+const publicKeyDislpay = $("#publicKeyDisplay");
+const publicKeyInputButton = $("#publicKeyInputButton");
+const plaintext = $("#plaintext");
+const ciphertext = $("#ciphertext");
+
+publicKeyInputButton.addEventListener("click", async function (e) {
+  await getAesKey(publicKeyInput.value);
+  publicKeyInput.disabled = publicKeyInputButton.disabled = true;
+  plaintext.disabled = ciphertext.disabled = false;
+});
+
+plaintext.addEventListener("input", async function (e) {
+  ciphertext.value = await encrypt(plaintext.value);
+});
+
+ciphertext.addEventListener("input", async function (e) {
+  plaintext.value = await decrypt(ciphertext.value);
+});
 
 
 
