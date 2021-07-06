@@ -1,3 +1,4 @@
+"strict mode";
 
 let privateKey = null;
 let publicKey = null;
