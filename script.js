@@ -1,4 +1,3 @@
-"use strict";
 
 let privateKey = null;
 let publicKey = null;
