@@ -62,7 +62,7 @@ function concatBuffers(buffer1, buffer2) {
 
 async function generateKeyPair() {
   let publicKey;
-  ({private: privateKey, public: publicKey} = await crypto.subtle.generateKey({name: "ECDH", namedCurve: "P-521"}, true, ["deriveKey", "deriveBits"]));
+  ({privateKey, publicKey} = await crypto.subtle.generateKey({name: "ECDH", namedCurve: "P-521"}, true, ["deriveKey", "deriveBits"]));
   const buffer = await crypto.subtle.exportKey("raw", publicKey);
   publicKeyString = encodeBase58(buffer);
 }
