@@ -68,7 +68,7 @@ async function generateKeyPair() {
 }
 
 async function getAesKey(publicKey) {
-  const strangerPublicKey = await crypto.subtle.importKey("raw", decodeBase58(publicKey));
+  const strangerPublicKey = await crypto.subtle.importKey("raw", decodeBase58(publicKey),  {name: "ECDH", namedCurve: "P-521"}, false, ["deriveKey"]);
   aesKey = await crypto.subtle.deriveKey({name: "ECDH", public: strangerPublicKey}, privateKey, {name: "AES-GCM", length: 256}, false, ["encrypt", "decrypt"]);
 }
 
