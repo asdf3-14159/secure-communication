@@ -1,0 +1,12 @@
+.publicKeyOutputArea {
+  overflow-wrap: anywhere;
+}
+
+.publicKeyOutput {
+  padding: 1em;
+}
+
+.error {
+  color: red;
+  font-weight: bolder;
+}

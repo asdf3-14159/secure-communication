@@ -97,28 +97,51 @@ const decoder = new TextDecoder();
 const $ = s => document.querySelector(s);
 
 const publicKeyInput = $("#publicKeyInput");
-const publicKeyDisplay = $("#publicKeyDisplay");
 const publicKeyInputButton = $("#publicKeyInputButton");
-const plaintext = $("#plaintext");
-const ciphertext = $("#ciphertext");
+const publicKeyError = $("#publicKeyError");
+const publicKeyOutput = $("#publicKeyDisplay");
+const plainTextInput = $("#plainTextInput");
+const cipherTextInput = $("#cipherTextInput");
+const plainTextOutput = $("#plainTextOutput");
+const cipherTextOutput = $("#cipherTextOutput");
+const encryptError = $("#encryptError");
+const decryptError = $("#decryptError");
 
 publicKeyInputButton.addEventListener("click", async function (e) {
-  await getAesKey(publicKeyInput.value);
-  publicKeyInput.disabled = publicKeyInputButton.disabled = true;
-  plaintext.disabled = ciphertext.disabled = false;
+  publicKeyError.textContent = "";
+  try {
+    await getAesKey(publicKeyInput.value);
+    publicKeyInput.disabled = publicKeyInputButton.disabled = true;
+    plainTextInput.disabled = cipherTextInput.disabled = false;
+  }
+  catch (error) {
+    publicKeyError.textContent = error;
+  }
 });
 
-plaintext.addEventListener("input", async function (e) {
-  ciphertext.value = await encrypt(plaintext.value);
+plainTextInput.addEventListener("input", async function (e) {
+  encryptError.textContent = "";
+  try {
+    cipherTextOutput.value = await encrypt(plainTextInput.value);
+  }
+  catch (error) {
+    encryptError.textContent = error;
+  }
 });
 
-ciphertext.addEventListener("input", async function (e) {
-  plaintext.value = await decrypt(ciphertext.value);
+cipherTextInput.addEventListener("input", async function (e) {
+  decryptError.textContent = "";
+  try {
+    plainTextOutput.value = await decrypt(cipherTextInput.value);
+  }
+  catch (error) {
+    decryptError.textContent = error;
+  }
 });
 
 async function start() {
   await generateKeyPair();
-  publicKeyDisplay.textContent = publicKeyString;
+  publicKeyOutput.textContent = publicKeyString;
   publicKeyInput.disabled = publicKeyInputButton.disabled = false;
 }
 

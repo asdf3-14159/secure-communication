@@ -3,16 +3,44 @@
     <title>AES Communication</title>
   </head>
   <body>
-    <div>
-      Send this to other person: <div id="publicKeyDisplay"></div>
-    </div>
-    <br><br>
-    <div>
-      Value from other person: <input type="text" id="publicKeyInput" disabled> <button id="publicKeyInputButton" disabled>Go!</button>
-    </div>
-    <br><br>
-    <textarea id="plaintext" disabled placeholder="plaintext"></textarea>
-    <textarea id="ciphertext" disabled placeholder="ciphertext"></textarea>
+    <fieldset class="publicKeyOutputArea">
+      <legend>
+        My Public Key <em>(Send this to other person)</em>
+      </legend>
+      
+      <div id="publicKeyOutput" class="publicKeyOutput"></div>
+    </fieldset>
+    
+    
+    <fieldset>
+      <legend>
+        Stranger's Public Key <em>(Value from other person)</em>
+      </legend>
+      
+      <div id="publicKeyError" class="error"></div>
+      <input type="text" id="publicKeyInput" disabled> <button id="publicKeyInputButton" disabled>Go!</button>
+    </fieldset>
+    
+    
+    <fieldset>
+      <legend>Encrypt</legend>
+      
+      <div id="encryptError" class="error"></div>
+      
+      <textarea id="plainTextInput" disabled placeholder="plaintext"></textarea>
+      <textarea id="cipherTextOutput" readonly placeholder="ciphertext"></textarea>
+    </fieldset>
+    
+    
+    <fieldset>
+      <legend>Decrypt</legend>
+      
+      <div id="decryptError" class="error"></div>
+      
+      <textarea id="cipherTextInput" disabled placeholder="ciphertext"></textarea>
+      <textarea id="plainTextOutput" readonly placeholder="plaintext"></textarea>
+    </fieldset>
+    
     <script src="script.js"></script>
   </body>
 </html>
