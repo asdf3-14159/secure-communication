@@ -99,7 +99,7 @@ const $ = s => document.querySelector(s);
 const publicKeyInput = $("#publicKeyInput");
 const publicKeyInputButton = $("#publicKeyInputButton");
 const publicKeyError = $("#publicKeyError");
-const publicKeyOutput = $("#publicKeyDisplay");
+const publicKeyOutput = $("#publicKeyOutput");
 const plainTextInput = $("#plainTextInput");
 const cipherTextInput = $("#cipherTextInput");
 const plainTextOutput = $("#plainTextOutput");
