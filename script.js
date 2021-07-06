@@ -116,6 +116,12 @@ ciphertext.addEventListener("input", async function (e) {
   plaintext.value = await decrypt(ciphertext.value);
 });
 
+async function start() {
+  await generateKeyPair();
+  publicKeyDisplay.textContent = publicKeyString;
+  publicKeyInput.disabled = publicKeyInputButton.disabled = false;
+}
+
 
 
 
