@@ -1,6 +1,6 @@
 "use strict";
 
-import {concatBuffer, encodeBase58, decodeBase58} from "./utilities.js";
+import {concatBuffers, encodeBase58, decodeBase58} from "./utilities.js";
 
 
 let privateKey = null;
